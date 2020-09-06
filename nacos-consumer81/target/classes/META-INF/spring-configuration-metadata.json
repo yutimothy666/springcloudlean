@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "config",
+      "type": "com.timothy.nacosconsumer.config.ConfigProperties",
+      "sourceType": "com.timothy.nacosconsumer.config.ConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "config.id",
+      "type": "java.lang.String",
+      "sourceType": "com.timothy.nacosconsumer.config.ConfigProperties"
+    },
+    {
+      "name": "config.version",
+      "type": "java.lang.String",
+      "sourceType": "com.timothy.nacosconsumer.config.ConfigProperties"
+    }
+  ],
+  "hints": []
+}

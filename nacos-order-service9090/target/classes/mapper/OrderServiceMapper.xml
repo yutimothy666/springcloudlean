@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.timothy.orderservice.mapper.OrderServiceMapper">
+
+    <resultMap id="OrderTableResult" type="com.timothy.common.bean.OrderTable">
+        <result property="orderId" column="order_id"/>
+        <result property="orderCode" column="order_code"/>
+    </resultMap>
+    <sql id="selectOrderTableVO">
+        select order_id,order_code from order_table
+    </sql>
+    <insert id="insertOrderTable" parameterType="com.timothy.common.bean.OrderTable" useGeneratedKeys="true"
+            keyColumn="order_id" keyProperty="orderId">
+        insert into order_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null and orderId != ''">
+                order_id,
+            </if>
+            <if test="orderCode != null and orderCode != null">
+                order_code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null and orderCode != ''">
+                #{orderId},
+            </if>
+            <if test="orderCode != null and orderCode != ''">
+                #{orderCode},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateOrderTable" parameterType="com.timothy.common.bean.OrderTable">
+        update order_table
+        <trim suffix="SET" suffixOverrides=",">
+            <if test="orderId != null and orderId! = ''">
+                order_id,
+            </if>
+            <if test="orderCode != null and orderCode != ''">
+                order_code,
+            </if>
+        </trim>
+        where order_id =#{orderId}
+    </update>
+    <delete id="deleteOrderTableByIds" parameterType="String">
+        delete from order_table where order_id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <delete id="deleteOrderTableById" parameterType="Long">
+        delete from order_table where order_id=#{orderId};
+    </delete>
+
+    <select id="selectOrderTableById" resultMap="OrderTableResult" parameterType="Long">
+        <include refid="selectOrderTableVO"/>
+        where order_id = #{orderId}
+    </select>
+    <select id="selectOrderTableList" resultMap="OrderTableResult" parameterType="com.timothy.common.bean.OrderTable">
+        <include refid="selectOrderTableVO"/>
+        <where>
+            <if test="orderId != null and orderId != ''">
+                order_id=#{orderId}
+            </if>
+            <if test="orderCode != null and orderCode != ''">
+                order_code=#{orderCode}
+            </if>
+        </where>
+    </select>
+</mapper>
