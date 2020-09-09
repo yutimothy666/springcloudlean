@@ -1,12 +1,16 @@
 package com.timothy.orderservice.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Maps;
 import com.timothy.common.bean.OrderTable;
 import com.timothy.common.config.AjaxResult;
 import com.timothy.orderservice.service.OrderService;
-import org.checkerframework.checker.units.qual.A;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * @Author yutimothy
@@ -14,20 +18,19 @@ import javax.annotation.Resource;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/orderTable")
+@RequestMapping(value = "orderTable", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class OrderTableController {
 
     @Resource
     OrderService orderService;
 
     @GetMapping()
-    public AjaxResult getList(@RequestBody OrderTable orderTable) {
+    public AjaxResult getList(OrderTable orderTable) {
         return AjaxResult.success(orderService.selectOrderTableList(orderTable));
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public AjaxResult getOne(@PathVariable("id") Long orderId) {
+    @GetMapping(value = "/{id}")
+    public Object getOne(@PathVariable("id") Long orderId) {
         return AjaxResult.success(orderService.selectOrderTableById(orderId));
     }
 

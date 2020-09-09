@@ -10,15 +10,15 @@ import java.util.List;
  * @Version 1.0
  */
 public interface OrderService {
-    public OrderTable selectOrderTableById(Long orderId);
+    OrderTable selectOrderTableById(Long orderId);
 
-    public List<OrderTable> selectOrderTableList(OrderTable orderTable);
+    List<OrderTable> selectOrderTableList(OrderTable orderTable);
 
-    public int insertOrderTable(OrderTable orderTable);
+    int insertOrderTable(OrderTable orderTable);
 
-    public int updateOrderTable(OrderTable orderTable);
+    int updateOrderTable(OrderTable orderTable);
 
-    public int deleteOrderTableByIds(String ids);
+    int deleteOrderTableByIds(String ids);
 
-    public int deleteOrderTableById(Long orderId);
+    int deleteOrderTableById(Long orderId);
 }

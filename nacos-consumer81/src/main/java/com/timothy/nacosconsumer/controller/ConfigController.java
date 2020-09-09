@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
  * @Version 1.0
  */
 @RestController
-@RequestMapping("/config")
+@RequestMapping(value = "/config", produces = {"application/json;charset=UTF-8"})
 public class ConfigController {
 
     @Resource
@@ -30,6 +30,6 @@ public class ConfigController {
     public String name(@PathVariable("name") String name) throws NoSuchFieldException, IllegalAccessException {
         Field declaredField = configProperties.getClass().getDeclaredField(name);
         declaredField.setAccessible(true);
-        return (String) declaredField.get(declaredField);
+        return (String) declaredField.get(configProperties);
     }
 }

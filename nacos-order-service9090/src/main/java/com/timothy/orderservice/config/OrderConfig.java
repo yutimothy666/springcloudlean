@@ -4,8 +4,6 @@ import com.timothy.common.config.AjaxResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.net.ConnectException;
-
 /**
  * @Author yutimothy
  * @Date 2020/9/6 11:21

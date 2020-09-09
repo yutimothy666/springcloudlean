@@ -29,11 +29,11 @@ public class OrderTable {
         this.orderCode = orderCode;
     }
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", OrderTable.class.getSimpleName() + "[", "]")
-                .add("orderId=" + orderId)
-                .add("orderCode='" + orderCode + "'")
-                .toString();
-    }
+//    @Override
+//    public String toString() {
+//        return new StringJoiner(", ", OrderTable.class.getSimpleName() + "[", "]")
+//                .add("orderId=" + orderId)
+//                .add("orderCode='" + orderCode + "'")
+//                .toString();
+//    }
 }

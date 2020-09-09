@@ -12,9 +12,9 @@ import java.util.HashMap;
  * @Date 2020/9/6 0:08
  * @Version 1.0
  */
-public class AjaxResult extends HashMap<String, Object> implements Serializable {
+public class AjaxResult extends HashMap<String, Object>{
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
 
     public static final String CODE_TAG = "code";
 
